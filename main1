@@ -1,0 +1,111 @@
+#include<stdio.h>
+
+int main() {
+    int arr[10];
+    int select;
+    int i, j, tmp = 0;
+    int z = 0;
+    int y = 0;
+
+
+    while (1)
+    {
+        printf("배열 10개를 입력해주세요:  \n");
+        for (i = 0; i < 10; i++)
+            scanf_s("%d", &arr[i]); // 10개의 값 입력;
+        printf("menu 선택 1,오름차순, 2.내림차순, 3.max_min, 0.종료  \n");
+
+        printf("선택 : ");
+        scanf_s("%d", &select);
+
+
+        if (select == 1)
+        {
+
+
+            //오름차순
+            for (i = 0; i < 10; i++) {
+                for (j = i; j < 10; j++) {
+
+                    if (arr[i] > arr[j]) {
+                        tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+
+
+                    }
+                }
+            }
+        }
+        else if (select == 2)
+        {                //내림차순
+            for (i = 0; i < 10; i++) {
+                for (j = i; j < 10; j++) {
+                    if (arr[i] < arr[j]) {
+                        tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+
+                    }
+                }
+            }
+        }
+        else if (select == 3)
+        {                          //최대, 최소
+            for (i = 0; i < 10; i++) {
+                if (z < arr[i]) {
+                    z = arr[i];
+                }
+            }
+            for (i = 0; i < 10; i++) {
+                if (arr[i] < arr[i+1]) {
+                    y = arr[i];
+                    for (i = 0; i < 10; i++) {
+                        if (y > arr[i]) {
+                            y = arr[i];
+                        }
+                    }
+                }
+            }
+
+        }
+        else{
+            printf("잘못 입력하셨습니다.");
+        }
+
+
+        // 결과 출력
+        if (select == 0) {
+            return 0;
+            break;
+        }
+
+        else if (select == 3) {
+            printf("최댓값: %d ", z);
+            printf("최솟값: %d ", y);
+            printf("\n");
+            z = 0;
+            y = 0;
+        }
+        else if (select == 2) {
+            printf("결과 : ");
+            for (i = 0; i < 10; i++)
+            {
+                printf("%d ", arr[i]);
+            }
+
+
+            printf("\n");
+        }
+        else if (select == 1) {
+            printf("결과 : ");
+            for (i = 0; i < 10; i++)
+                printf("%d ", arr[i]);
+
+        }
+        printf("\n");
+
+
+    }
+    return 0;
+}
